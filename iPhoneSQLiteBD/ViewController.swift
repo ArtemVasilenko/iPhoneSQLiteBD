@@ -13,29 +13,34 @@ import SQLite3
 class ViewController: UIViewController {
     
     var fm = FileManager.default
-    let path = "MyDB12.db"
+    var path = ""
     var url: URL?
     var db: OpaquePointer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        url = getURL(path: path)
-        print(url!)
-               db = createDB(url!)
+        //url = getURL(path: path)
+        //print(url!)
+        
+        //db = createDB(url!)
         //print(db!)
-        createTable()
-        madeInsert("Nikolay")
+        
+        //createTable()
+        //madeInsert("Nikolay")
         
         sqlite3_close(db)
     }
     
     @IBAction func buttons(_ sender: UIButton) {
-       
+//        db = createDB(getURL(path: path))
+//        print("hopa")
+        getTextFromAlert()
+        
     }
     
     
-    func getURL(path: String) -> URL { //получаем директорию в папке документы
+    func getURL(path: String) -> URL {
         var url = URL(fileURLWithPath: "")
         
         do {
@@ -49,17 +54,13 @@ class ViewController: UIViewController {
     
     
     func createDB(_ getUrl: URL) -> OpaquePointer? {
-        
-        
-        
         var db: OpaquePointer? = nil //объявление пустого указателя на базу данных
-        
         
         if sqlite3_open(getUrl.path, &db) == SQLITE_OK { //создать базу данных
             print("connect done \(getUrl.path)")
             return db
         } else {
-            print("error")
+            print("error create DB")
             exit(0)
         }
     }
@@ -107,20 +108,20 @@ class ViewController: UIViewController {
     }
     
     
-    func getTextFromAlert() -> String {
+    func getTextFromAlert() {
         var name = String()
         
-        let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Create Data Base", message: "Name", preferredStyle: .alert)
         alert.addTextField()
         
         let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned alert] _ in
             let answer = alert.textFields![0]
             name = answer.text ?? ""
+            self.db = self.createDB(self.getURL(path: name + ".db"))
         }
         alert.addAction(submitAction)
         self.present(alert, animated: true)
         
-        return name
     }
     
     

@@ -12,6 +12,8 @@
 		AC49A597224E9194004ECD04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC49A595224E9194004ECD04 /* Main.storyboard */; };
 		AC49A599224E9196004ECD04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC49A598224E9196004ECD04 /* Assets.xcassets */; };
 		AC49A59C224E9196004ECD04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC49A59A224E9196004ECD04 /* LaunchScreen.storyboard */; };
+		AC49A5A4224E9694004ECD04 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49A5A3224E9694004ECD04 /* Data.swift */; };
+		AC49A5A6224F6251004ECD04 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49A5A5224F6251004ECD04 /* Alert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		AC49A598224E9196004ECD04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC49A59B224E9196004ECD04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC49A59D224E9196004ECD04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC49A5A3224E9694004ECD04 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		AC49A5A5224F6251004ECD04 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 			children = (
 				AC49A591224E9194004ECD04 /* AppDelegate.swift */,
 				AC49A593224E9194004ECD04 /* ViewController.swift */,
+				AC49A5A5224F6251004ECD04 /* Alert.swift */,
+				AC49A5A3224E9694004ECD04 /* Data.swift */,
 				AC49A595224E9194004ECD04 /* Main.storyboard */,
 				AC49A598224E9196004ECD04 /* Assets.xcassets */,
 				AC49A59A224E9196004ECD04 /* LaunchScreen.storyboard */,
@@ -136,6 +142,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC49A594224E9194004ECD04 /* ViewController.swift in Sources */,
+				AC49A5A4224E9694004ECD04 /* Data.swift in Sources */,
+				AC49A5A6224F6251004ECD04 /* Alert.swift in Sources */,
 				AC49A592224E9194004ECD04 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,6 +291,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SP8ZAT56L5;
 				INFOPLIST_FILE = iPhoneSQLiteBD/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -300,6 +309,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SP8ZAT56L5;
 				INFOPLIST_FILE = iPhoneSQLiteBD/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

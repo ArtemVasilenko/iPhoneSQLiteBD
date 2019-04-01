@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     var path = ""
     var url: URL?
     var db: OpaquePointer?
+    var arrayDb = [String: OpaquePointer]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,9 +34,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func buttons(_ sender: UIButton) {
-//        db = createDB(getURL(path: path))
-//        print("hopa")
+
         getTextFromAlert()
+        
         
     }
     
@@ -52,18 +53,17 @@ class ViewController: UIViewController {
         return url
     }
     
-    
     func createDB(_ getUrl: URL) -> OpaquePointer? {
-        var db: OpaquePointer? = nil //объявление пустого указателя на базу данных
-        
-        if sqlite3_open(getUrl.path, &db) == SQLITE_OK { //создать базу данных
-            print("connect done \(getUrl.path)")
-            return db
-        } else {
-            print("error create DB")
-            exit(0)
-        }
+    var db: OpaquePointer? = nil //объявление пустого указателя на базу данных
+    
+    if sqlite3_open(getUrl.path, &db) == SQLITE_OK { //создать базу данных
+        print("connect done \(getUrl.path)")
+        return db
+    } else {
+        print("error create DB")
+        exit(0)
     }
+}
     
     func createTable(){
         
@@ -73,7 +73,7 @@ class ViewController: UIViewController {
         "ID"    INTEGER PRIMARY KEY AUTOINCREMENT,
         "Name"    TEXT NOT NULL UNIQUE
         );
-"""
+        """
         
         if sqlite3_prepare_v2(self.db, newTable, -1, &table, nil) == SQLITE_OK {
             if sqlite3_step(table) == SQLITE_DONE {
@@ -114,11 +114,14 @@ class ViewController: UIViewController {
         let alert = UIAlertController(title: "Create Data Base", message: "Name", preferredStyle: .alert)
         alert.addTextField()
         
-        let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned alert] _ in
+        let submitAction = UIAlertAction(title: "Submit", style: .default) { [alert] _ in
             let answer = alert.textFields![0]
             name = answer.text ?? ""
             self.db = self.createDB(self.getURL(path: name + ".db"))
+            self.arrayDb.updateValue(self.db!, forKey: name)
+            print("Кол-во элементов = \(self.arrayDb.count)")
         }
+        
         alert.addAction(submitAction)
         self.present(alert, animated: true)
         
